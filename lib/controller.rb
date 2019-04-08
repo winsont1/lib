@@ -13,17 +13,19 @@ class Controller
   end
 
   def start_robot
-    input = @view.start_robot
     # validate_move(input)
-
-    coordinates = input[6..-1].split(',') #Coordinates placements and direction, split into an array delimited by ','
+    begin
+      input = @view.start_robot
+      coordinates = input[6..-1].split(',') #Coordinates placements and direction, split into an array delimited by ','
+    rescue
+      retry
+    end
     x_input = coordinates[0]
     y_input = coordinates[1]
     direction_input = coordinates[2]
 
     valid_xy = ['0', '1', '2', '3', '4']
     valid_direction = ['NORTH', 'SOUTH', 'EAST', 'WEST']
-
     #Checks if input is OK
     if input[0..5] == 'PLACE ' && (valid_xy.include? x_input) && (valid_xy.include? y_input) && (valid_direction.include? direction_input)
       #Update robot position
