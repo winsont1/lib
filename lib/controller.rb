@@ -12,8 +12,13 @@ class Controller
     name = @view.rename
   end
 
+
+
   def start_robot
-    # validate_move(input)
+    # Receive input
+    # Validate input
+    # Update robot
+    # Update robot
     begin
       input = @view.start_robot
       coordinates = input[6..-1].split(',') #Coordinates placements and direction, split into an array delimited by ','
@@ -32,9 +37,10 @@ class Controller
       @robot.position[:x] = x_input.to_i
       @robot.position[:y] = y_input.to_i
       @robot.position[:direction] = direction_input
+    # Move Robot
       move_robot
     else
-      input = @view.start_robot
+      start_robot
     end
   end
 
@@ -44,6 +50,7 @@ class Controller
     # Check if valid move, robot doesn't move if move is invalid
     # if @robot.move(selected_move)
     while selected_move != 'REPORT'
+      ### CHECK FOR VALID PLACE MOVE
       @robot.move(selected_move)
       selected_move = @view.move(@robot)
     end
@@ -52,5 +59,9 @@ class Controller
 
   def report_status
     @view.status(@robot)
+  end
+
+  def validate(input)
+    coordinates = input[6..-1].split(',') #Coordinates placements and direction, split into an array delimited by ','
   end
 end
