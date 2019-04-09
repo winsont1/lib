@@ -1,5 +1,20 @@
+Toy Robot Simulator - Ruby (winsont1)
+===================
+Hi guys, this is my implementation of the Toy Robot Simulator.
 
-Toy Robot Simulator
+## How to launch Toy Robot app
+
+In the root folder, please run the following commands in your terminal.
+
+    $ git pull origin master
+    $ ruby lib/app.rb
+
+This will provide you with a command line to interact with the Toy Robot.
+
+Please run the `rake` command to run the Toy Robot tests.
+    $ rake
+
+Problem Specs
 ===================
 
 Description
