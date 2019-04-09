@@ -1,12 +1,10 @@
 Toy Robot Simulator - Ruby
 ===================
-Hello World!
-This is my implementation of the Toy Robot Simulator from scratch.
+Hello World!  This is my implementation of the Toy Robot Simulator from scratch.
 
 ## Launch Directions
 
-In the root folder, please run the following commands in your terminal.
-This will launch a command-line interface.
+In the root folder, please run the following commands in your terminal.  This will pull the latest repo and launch a command-line interface.
 
     $ git pull origin master
     $ ruby lib/app.rb
