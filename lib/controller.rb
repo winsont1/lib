@@ -15,7 +15,7 @@ class Controller
 
   def start_robot
     input = @view.start_robot(@robot)
-    if validate_placement(input)
+    if validate_placement(input) # Validate whether its a placement input
       move_robot
     else
       start_robot
@@ -25,7 +25,7 @@ class Controller
   def move_robot
     selected_move = @view.move
     while selected_move != 'REPORT'
-      if validate_placement(selected_move) != true
+      if validate_placement(selected_move) != true # Ensures not new Placement
         @robot.move(selected_move)
         selected_move = @view.move
       end
@@ -39,6 +39,7 @@ class Controller
 
   private
 
+  # Validate if its a placement input, and update robot position if true
   def validate_placement(input)
     begin
       coordinates = input[6..-1].split(',')
