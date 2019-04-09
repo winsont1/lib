@@ -1,3 +1,4 @@
+# Initialize Router class
 class Router
   def initialize(controller)
     @controller = controller
@@ -5,8 +6,8 @@ class Router
   end
 
   def run
-    puts "Welcome to your Toy Robot!"
-    puts "           --           "
+    puts 'Welcome to your Toy Robot!'
+    puts '           --           '
 
     while @running
       display_tasks
@@ -25,7 +26,7 @@ class Router
     when 3 then @controller.report_status
     when 4 then stop
     else
-      puts "Please press 1, 2, 3 or 4"
+      puts 'Please press 1, 2, 3 or 4'
     end
   end
 
@@ -34,11 +35,11 @@ class Router
   end
 
   def display_tasks
-    puts ""
-    puts "What do you want to do next?"
-    puts "1 - Name / rename your robot"
-    puts "2 - Place and move your robot"
-    puts "3 - Recall the last position of your robot"
-    puts "4 - Stop and exit the program"
+    puts ''
+    puts 'What do you want to do next?'
+    puts '1 - Name / rename your robot'
+    puts '2 - Place and move your robot'
+    puts '3 - Recall the last position of your robot'
+    puts '4 - Stop and exit the program'
   end
 end
