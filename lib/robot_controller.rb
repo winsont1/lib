@@ -1,0 +1,82 @@
+require_relative 'robot'
+require_relative 'view'
+require_relative 'commands/rename_command'
+require_relative 'commands/place_command'
+require 'pry'
+
+class RobotController
+  def initialize(robot)
+    @robot = robot
+    # @view = View.new
+    @rename_command = RenameCommand.new(@robot)
+    # @simulate_command = SimulateCommand.new(@robot)
+    @place_command = PlaceCommand.new(@robot)
+    # @move_command = MoveCommand.new(@robot)
+    # @left_command
+    # @right_command
+  end
+
+  def rename
+    @rename_command.execute
+  end
+
+  def place_command
+    @place_command.execute
+  end
+
+
+  def place
+    @place_command.execute
+    # move_robot
+    puts 'yeah baby'
+  end
+
+  # def start_robot
+  #   input = @view.start_robot(@robot)
+  #   if validate_placement(input) # Validate whether its a placement input
+  #     move_robot
+  #   else
+  #     start_robot
+  #   end
+  # end
+
+  def move_robot
+    selected_move = @view.move
+    while selected_move != 'REPORT'
+      unless validate_placement(selected_move) # Ensures not new Placement
+        @robot.move(selected_move)
+        selected_move = @view.move
+      end
+    end
+    report_status
+  end
+
+  def report_status
+    @view.status(@robot)
+  end
+
+  private
+
+  # Validate if its a placement input, and update robot position if true
+  def validate_placement(input)
+    begin
+      coordinates = input[6..-1].split(',')  #TODO : Put it in a check ',' error
+      x_input = coordinates[0].to_i
+      y_input = coordinates[1].to_i
+      direction_input = coordinates[2]
+    rescue #TODO : BE specific
+      return false
+    end
+    if input[0..5] == 'PLACE ' && (Robot::VALID_XY_COORDS.include? x_input) && (Robot::VALID_XY_COORDS.include? y_input) && (Robot::VALID_DIRECTIONS.include? direction_input)
+      update_position(x_input, y_input, direction_input)
+    else
+      false
+    end
+  end
+
+  def update_position(x_input, y_input, direction_input)
+    @robot.position[:x] = x_input
+    @robot.position[:y] = y_input
+    @robot.position[:direction] = direction_input
+  end
+end

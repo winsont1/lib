@@ -1,6 +1,4 @@
-Toy Robot Simulator - Ruby
-===================
-Hello World!  This is my implementation of the Toy Robot Simulator from scratch.
+Hello World! This is my implementation of the Toy Robot Simulator from scratch.
 
 ## Launch Directions
 
